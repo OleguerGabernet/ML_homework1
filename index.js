@@ -53,7 +53,7 @@ async function app2() {
   document.getElementById('class-a').addEventListener('click', () => addExample(0));
   document.getElementById('class-b').addEventListener('click', () => addExample(1));
   document.getElementById('class-c').addEventListener('click', () => addExample(2));
-  //document.getElementById('class-o').addEventListener('click', () => addExample(3));
+  document.getElementById('class-o').addEventListener('click', () => addExample(3));
 
 
   while (true) {
@@ -64,10 +64,10 @@ async function app2() {
       const result = await classifier.predictClass(activation);
 
       //const classes = ['A', 'B', 'C', 'O'];
-      const classes = ['A', 'B', 'C'];
+      const classes = ['A', 'B', 'C', 'No-Action'];
       document.getElementById('console').innerText = `
-        prediction: ${classes[result.classIndex]}\n
-        probability: ${result.confidences[result.classIndex]}
+        prediction: ${classes[parseInt(result.label)]}\n
+        probability: ${result.confidences[parseInt(result.label)]}
       `;
     }
 
